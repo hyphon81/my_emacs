@@ -28,8 +28,6 @@
   ;;install-elispe function
   (auto-install-compatibility-setup))
 
-;; add to loadpath these directorys recursivery
-(add-to-load-path "elisp" "conf" "public_repos")
 
 ;; display file size
 (size-indication-mode t)

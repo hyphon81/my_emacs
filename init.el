@@ -3,20 +3,20 @@
   (let (path)
     (dolist (path paths paths)
       (let ((default-directory
-	      (expand-file-name (concat user-emacs-directory path))))
-	(add-to-list 'load-path default-directory)
-	(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
-	    (normal-top-level-add-subdirs-to-load-path))))))
+        (expand-file-name (concat user-emacs-directory path))))
+          (add-to-list 'load-path default-directory)
+            (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+              (normal-top-level-add-subdirs-to-load-path))))))
 
 (add-to-load-path "elisp" "conf" "public_repos")
 
 ;; package.el
 (when (require 'package nil t)
-  ;; add package repo
+;; add package repo
   (add-to-list 'package-archives
-	       '("marmalade" . "http://marmalade-repo.org/packages/"))
+    '("marmalade" . "http://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-  ;; load-path for installed packages
+;; load-path for installed packages
   (package-initialize))
 
 ;; auto-install
@@ -28,6 +28,29 @@
   ;;install-elispe function
   (auto-install-compatibility-setup))
 
+;; grep-a-lot
+(require 'grep-a-lot)
+(grep-a-lot-setup-keys)
+(grep-a-lot-advise igrep)
+
+;; undo-tree
+(when (require 'undo-tree nil t)
+  (global-undo-tree-mode))
+
+(set-default-coding-systems 'utf-8-unix) ;デフォルトの文字コード 
+
+(add-to-list 'default-frame-alist '(font . "ricty-13.5"))
+
+(setq skk-server-host "slack.hyphon81.net")
+(setq skk-server-portnum 1178)
+
+(defadvice abks:open-file (around my-abks:open-file activate)
+  (if (require 'doc-view  nil t)
+      (find-file (ad-get-arg 0))
+    ad-do-it))
+
+;; return string out of window
+(setq truncate-partial-width-windows nil)
 
 ;; display file size
 (size-indication-mode t)
@@ -44,10 +67,10 @@
 ;; current line high-light
 (defface my-hl-line-face
   '((((class color) (background dark))
-     (:background "NavyBlue" t))
-    (((class color) (background light))
-     (:background "LightGoldenrodYellow" t))
-    (t (:bold t)))
+      (:background "NavyBlue" t))
+        (((class color) (background light))
+        (:background "NavyBlue" t))
+   (t (:bold t)))
   "hl-line's my face")
 (setq hl-line-face 'my-hl-line-face)
 (global-hl-line-mode t)
@@ -59,35 +82,73 @@
 (setq show-paren-style 'expression)
 ;; paren face set
 (set-face-background 'show-paren-match-face nil)
-(set-face-underline-p 'show-paren-match-face "yellow")
+(set-face-underline-p 'show-paren-match-face "black")
 
 ;; not backup make
 ;;(setq make-backup-files nil) ;default = t
 (add-to-list 'backup-directory-alist
-	     (cons "." "~/.emacs.d/auto-save-list/"))
+  (cons "." "~/.emacs.d/auto-save-list/"))
 
 ;; not auto save make
 ;;(setq auto-save-default nil) ;default = t
 (setq auto-save-file-name-transforms
-      `((".*" ,(expand-file-name "~/.emacs.d/auto-save-list/") t)))
+  `((".*" ,(expand-file-name "~/.emacs.d/auto-save-list/") t)))
+
+;; white space  mode
+(require 'whitespace)
+(global-whitespace-mode 1)
+(set-face-foreground 'whitespace-space "DarkGoldenrod1")
+(set-face-background 'whitespace-space nil)
+(set-face-bold-p 'whitespace-space t)
+(set-face-foreground 'whitespace-tab "DarkOliveGreen1")
+(set-face-background 'whitespace-tab "DarkOliveGreen1")
+(set-face-underline  'whitespace-tab t)
+(setq whitespace-style '(face tabs tab-mark spaces space-mark))
+(setq whitespace-space-regexp "\\(\x3000+\\)")
+(setq whitespace-display-mappings
+  '((space-mark ?\x3000 [?\□])
+    (tab-mark   ?\t   [?\xBB ?\t])
+  ))
+
+;; w3
+(require 'w3)
+
 
 ;; ssh file access
 (require 'tramp)
-(setq tramp-default-method "ssh")
-
+(setq tramp-default-method "scpx")
+(add-to-list 'tramp-remote-path "/usr/bin")
+(add-to-list 'tramp-default-proxies-alist
+             '(".*" "\\`root\\'" "/sshx:%h:"))
+(add-to-list 'tramp-default-proxies-alist
+             '("localhost" nil nil))
+;(add-to-list 'tramp-default-proxies-alist
+;             '((regexp-quote (system-name)) nil nil))
+(setq tramp-debug-buffer t)
+          
 ;; add-hook #!
 (add-hook 'after-save-hook
-	  'executable-make-buffer-file-executable-if-script-p)
+  'executable-make-buffer-file-executable-if-script-p)
 
 ;; emacs-lisp-mode add-hook
 (add-hook 'emacs-lisp-mode-hook
-	  '(lambda ()
-	     (when (require 'eldoc nil t)
-	       (setq eldoc-idle-delay 0.2)
-	       (setq eldoc-echo-area-use-multiline-p t)
-	       (turn-on-eldoc-mode))))
-	     
+  '(lambda ()
+    (when (require 'eldoc nil t)
+    (setq eldoc-idle-delay 0.2)
+    (setq eldoc-echo-area-use-multiline-p t)
+    (turn-on-eldoc-mode))))
+
 ;; redo+
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-.") 'redo)
 )
+
+;(setenv "PATH"
+;  (concat "D:\\PGF\\putty-0.60-JP_Y-2007-08-06" ";"
+;    (getenv "PATH")))
+
+;(setenv "PATH"
+;   (format "%s;%s;%s"
+;    "D:\\PGF\\UnxUtils\\bin"
+;    "D:\\PGF\\UnxUtils\\usr\\local\\wbin"
+;    (or (getenv "$PATH") "")))

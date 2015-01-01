@@ -41,8 +41,13 @@
 
 (add-to-list 'default-frame-alist '(font . "ricty-13.5"))
 
-(setq skk-server-host "slack.hyphon81.net")
-(setq skk-server-portnum 1178)
+;;(setq skk-server-host "slack.hyphon81.net")
+;;(setq skk-server-portnum 1178)
+
+(require 'skk-autoloads)
+(global-set-key "\C-x\C-j" 'skk-mode)
+(global-set-key "\C-xj" 'skk-auto-fill-mode)
+(global-set-key "\C-xt" 'skk-tutorial)
 
 (defadvice abks:open-file (around my-abks:open-file activate)
   (if (require 'doc-view  nil t)
@@ -142,6 +147,9 @@
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-.") 'redo)
 )
+
+;; default character code utf-8
+(prefer-coding-system 'utf-8)
 
 ;(setenv "PATH"
 ;  (concat "D:\\PGF\\putty-0.60-JP_Y-2007-08-06" ";"

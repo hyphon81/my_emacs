@@ -1,7 +1,0 @@
-ssh rasp.hyphon81.net 
-ssh rasp.hyphon81.net 
-scp rasp.hyphon81.net 
-exit
-ssh rasp.hyphon81.net 
-uname
-exit

@@ -74,7 +74,7 @@
   '((((class color) (background dark))
       (:background "NavyBlue" t))
         (((class color) (background light))
-        (:background "NavyBlue" t))
+        (:background "DeepSkyBlue" t))
    (t (:bold t)))
   "hl-line's my face")
 (setq hl-line-face 'my-hl-line-face)
@@ -150,6 +150,33 @@
 
 ;; default character code utf-8
 (prefer-coding-system 'utf-8)
+
+;; intend space only
+(setq-default indent-tabs-mode nil)
+
+;; for cuda program
+(setq auto-mode-alist
+      (cons (cons "\\.cu$" 'c++-mode) auto-mode-alist))
+
+;; for octave program
+;; octave mode
+(autoload 'octave-mode "octave-mod" nil t)
+(setq auto-mode-alist
+           (cons '("\\.m$" . octave-mode) auto-mode-alist))
+(add-hook 'octave-mode-hook
+               (lambda ()
+                 (abbrev-mode 1)
+                 (auto-fill-mode 1)
+                 (if (eq window-system 'x)
+                     (font-lock-mode 1))))
+
+;;(require 'anything) 
+;;(require 'anything-config) 
+;;(require 'anything-match-plugin) 
+
+;; anything-etags+.el
+;;(require 'anything-etags+)
+;;(global-set-key "\M-." 'anything-etags+-select-one-key)
 
 ;(setenv "PATH"
 ;  (concat "D:\\PGF\\putty-0.60-JP_Y-2007-08-06" ";"

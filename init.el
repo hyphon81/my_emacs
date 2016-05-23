@@ -39,7 +39,8 @@
 
 (set-default-coding-systems 'utf-8-unix) ;デフォルトの文字コード 
 
-(add-to-list 'default-frame-alist '(font . "ricty-13.5"))
+(add-to-list 'default-frame-alist '(font . "Ricty-20"))
+;;(set-default-font "Ricty")
 
 ;;(setq skk-server-host "slack.hyphon81.net")
 ;;(setq skk-server-portnum 1178)
@@ -157,6 +158,14 @@
 ;; for cuda program
 (setq auto-mode-alist
       (cons (cons "\\.cu$" 'c++-mode) auto-mode-alist))
+
+;; for scala program
+(require 'scala-mode)
+
+;; for chuck program
+(require 'chuck-mode)
+(setq auto-mode-alist
+      (cons (cons "\\.ck$" 'chuck-mode) auto-mode-alist))
 
 ;; for octave program
 ;; octave mode

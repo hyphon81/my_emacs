@@ -75,7 +75,7 @@
   '((((class color) (background dark))
       (:background "NavyBlue" t))
         (((class color) (background light))
-        (:background "DeepSkyBlue" t))
+        (:background "#BFBFBF" t))
    (t (:bold t)))
   "hl-line's my face")
 (setq hl-line-face 'my-hl-line-face)
@@ -178,6 +178,19 @@
                  (auto-fill-mode 1)
                  (if (eq window-system 'x)
                      (font-lock-mode 1))))
+
+;; for javascript program
+;; js2-mode
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+;; for haskell program
+;; haskell-mode
+(require 'haskell-mode)
+
+;; for Cofeescript program
+;; coffee-mode
+(require 'coffee-mode)
 
 ;;(require 'anything) 
 ;;(require 'anything-config) 

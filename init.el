@@ -187,6 +187,12 @@
 ;; for haskell program
 ;; haskell-mode
 (require 'haskell-mode)
+(require 'flycheck-haskell)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;(add-hook 'haskell-mode-hook
+;          '(lambda ()
+;             (setq flycheck-checker 'hlint)
+;             (flycheck-mode 1)))
 
 ;; for Cofeescript program
 ;; coffee-mode

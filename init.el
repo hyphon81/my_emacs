@@ -16,6 +16,7 @@
   (add-to-list 'package-archives
     '("marmalade" . "http://marmalade-repo.org/packages/"))
   (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ;; load-path for installed packages
   (package-initialize))
 
@@ -161,6 +162,8 @@
 
 ;; for scala program
 (require 'scala-mode)
+(require 'ensime)
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 ;; for chuck program
 (require 'chuck-mode)
@@ -197,6 +200,12 @@
 ;; for Cofeescript program
 ;; coffee-mode
 (require 'coffee-mode)
+
+;; for git
+(require 'magit)
+
+;; for github
+(require 'gh)
 
 ;;(require 'anything) 
 ;;(require 'anything-config) 

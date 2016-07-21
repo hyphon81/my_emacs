@@ -952,3 +952,5 @@ of a line inside a multi-line comment "
     (scala-indent:fixup-whitespace)))
 
 (provide 'scala-mode-indent)
+
+(require 'scala-mode-lib)

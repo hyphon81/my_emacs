@@ -119,7 +119,7 @@
 
 ;; w3
 (require 'w3)
-
+(setq w3-default-homepage "https://google.com")
 
 ;; ssh file access
 (require 'tramp)
@@ -206,6 +206,25 @@
 
 ;; for github
 (require 'gh)
+
+;; auto-complete
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+(define-key ac-complete-mode-map "\C-tab" 'ac-next)
+(define-key ac-complete-mode-map "\C-n" 'ac-next)
+(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+(require 'auto-complete-c-headers)
+(add-hook 'c++-mode-hook '(setq ac-sources (append ac-sources '(ac-source-c-headers))))
+(add-hook 'c-mode-hook '(setq ac-sources (append ac-sources '(ac-source-c-headers))))
+(add-hook
+    'python-mode
+    (lambda ()
+      ;; Make sure `ac-source-chunk-list' comes first.
+      (setq ac-sources (append '(ac-source-chunk-list) ac-sources))
+      (setq ac-chunk-list
+            '("os.path.abspath" "os.path.altsep" "os.path.basename"))))
+
 
 ;;(require 'anything) 
 ;;(require 'anything-config) 

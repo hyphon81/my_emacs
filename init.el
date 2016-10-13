@@ -226,6 +226,12 @@
       (setq ac-chunk-list
             '("os.path.abspath" "os.path.altsep" "os.path.basename"))))
 
+;; window size
+(setq default-frame-alist
+      (append (list
+               '(width. 80)
+               '(height. 30))
+              default-frame-alist))
 
 ;;(require 'anything) 
 ;;(require 'anything-config) 

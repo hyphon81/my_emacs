@@ -1,90 +1,92 @@
-((("append" .
+((("Ricty-20" .
+   [1 0 0 0 0 0 0 0])
+  ("empty" .
+   [1 0 0 0 0])
+  ("is" .
+   [1 0])
+  ("Room" .
+   [1 0 0 0])
+  ("Exception" .
+   [0 0 0 0 1 0 0 0 0])
+  ("retrieve" .
+   [0 0 0 0 1 0 0 0])
+  ("roomNum" .
+   [2 0 0 0 0 0 0])
+  ("map" .
+   [2 0 0])
+  ("seq" .
+   [2 0 0])
+  ("roomsNumberOption" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("roomsOption" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("Inf" .
+   [2 0 0])
+  ("Duration" .
+   [1 0 0 1 0 0 0 0])
+  ("accountId" .
+   [1 0 0 0 0 0 0 0 0])
+  ("identity" .
+   [0 0 0 0 1 0 0 0])
+  ("request" .
+   [1 0 0 0 0 0 0])
+  ("retrieveByAccountId" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("result" .
+   [2 0 0 0 0 0])
+  ("Await" .
+   [2 0 0 0 0])
+  ("RoomService" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("roomService" .
+   [1 0 0 0 0 0 0 1 0 0 0])
+  ("ActiveUserService" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("activeUserService" .
+   [0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0])
+  ("models" .
    [1 0 0 0 0 0])
-  ("default-frame-alist" .
-   [0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0])
-  ("default" .
-   [1 0 0 0 0 0 1])
-  ("implicitActorSystem" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("configuration" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("Name" .
+  ("API" .
+   [1 0 0])
+  ("Clef" .
+   [1 0 0 0])
+  ("a" .
+   [2])
+  ("to" .
+   [1 0])
+  ("retrieveFromAllUser" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("toString" .
+   [2 0 0 0 0 0 0 0])
+  ("r" .
+   [2])
+  ("userService" .
+   [3 0 0 0 0 0 0 0 0 0 0])
+  ("UserService" .
+   [4 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [2 0 0 0])
+  ("set" .
+   [0 0 1])
+  ("define-key" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("get" .
+   [2 0 0])
+  ("getOrElse" .
+   [3 0 0 0 0 0 0 0 0])
+  ("User" .
    [1 0 0 0])
   ("name" .
    [1 0 0 0])
-  ("User" .
+  ("Name" .
    [1 0 0 0])
-  ("getOrElse" .
-   [3 0 0 0 0 0 0 0 0])
-  ("get" .
-   [2 0 0])
-  ("define-key" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("set" .
-   [0 0 1])
-  ("setq" .
-   [2 0 0 0])
-  ("UserService" .
-   [4 0 0 0 0 0 0 0 0 0 0])
-  ("userService" .
-   [3 0 0 0 0 0 0 0 0 0 0])
-  ("r" .
-   [2])
-  ("toString" .
-   [2 0 0 0 0 0 0 0])
-  ("retrieveFromAllUser" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("to" .
-   [1 0])
-  ("a" .
-   [2])
-  ("Clef" .
-   [1 0 0 0])
-  ("API" .
-   [1 0 0])
-  ("models" .
-   [1 0 0 0 0 0])
-  ("activeUserService" .
-   [0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0])
-  ("ActiveUserService" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("roomService" .
-   [1 0 0 0 0 0 0 1 0 0 0])
-  ("RoomService" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("Await" .
-   [2 0 0 0 0])
-  ("result" .
-   [2 0 0 0 0 0])
-  ("retrieveByAccountId" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("request" .
-   [1 0 0 0 0 0 0])
-  ("identity" .
-   [0 0 0 0 1 0 0 0])
-  ("accountId" .
-   [1 0 0 0 0 0 0 0 0])
-  ("Duration" .
-   [1 0 0 1 0 0 0 0])
-  ("Inf" .
-   [2 0 0])
-  ("roomsOption" .
-   [2 0 0 0 0 0 0 0 0 0 0])
-  ("roomsNumberOption" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("seq" .
-   [2 0 0])
-  ("map" .
-   [2 0 0])
-  ("roomNum" .
-   [2 0 0 0 0 0 0])
-  ("retrieve" .
-   [0 0 0 0 1 0 0 0])
-  ("Exception" .
-   [0 0 0 0 1 0 0 0 0])
-  ("Room" .
-   [1 0 0 0])
-  ("is" .
-   [1 0])
-  ("empty" .
-   [1 0 0 0 0])))
+  ("configuration" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("implicitActorSystem" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("default" .
+   [2 0 0 0 0 0 1])
+  ("default-frame-alist" .
+   [0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0])
+  ("append" .
+   [1 0 0 0 0 0])))

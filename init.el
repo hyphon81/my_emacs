@@ -40,8 +40,9 @@
 
 (set-default-coding-systems 'utf-8-unix) ;デフォルトの文字コード 
 
-(add-to-list 'default-frame-alist '(font . "Ricty-20"))
-;;(set-default-font "Ricty")
+;;(add-to-list 'default-frame-alist '(font . "Ricty-20"))
+(set-default-font "Ricty-20")
+
 
 ;;(setq skk-server-host "slack.hyphon81.net")
 ;;(setq skk-server-portnum 1178)
@@ -244,9 +245,11 @@
 ;; window size
 (setq default-frame-alist
       (append (list
-               '(width. 80)
-               '(height. 30))
+               '(font . "Ricty-20")
+               '(width . 80)
+               '(height . 30))
               default-frame-alist))
+(setq initial-frame-alist default-frame-alist)
 
 ;;(require 'anything) 
 ;;(require 'anything-config) 

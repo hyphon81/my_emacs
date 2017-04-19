@@ -115,7 +115,12 @@
 (setq whitespace-display-mappings
   '((space-mark ?\x3000 [?\Å†])
     (tab-mark   ?\t   [?\xBB ?\t])
-  ))
+    ))
+
+;; mark region highlight
+(setq-default transient-mark-mode t)
+(set-face-background 'region "yellow")
+(set-face-background 'region "red")
 
 ;; w3
 (require 'w3)
@@ -166,6 +171,15 @@
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 (require 'mvn)
 
+;; for erlang program
+(require 'erlang-start)
+
+;; for nix program
+(require 'nix-mode)
+
+;; for C# program
+(require 'csharp-mode)
+
 ;; for chuck program
 (require 'chuck-mode)
 (setq auto-mode-alist
@@ -187,6 +201,7 @@
 ;; js2-mode
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq js-indent-level 2)
 
 ;; for haskell program
 ;; haskell-mode
@@ -250,3 +265,17 @@
 ;    "D:\\PGF\\UnxUtils\\bin"
 ;    "D:\\PGF\\UnxUtils\\usr\\local\\wbin"
 ;    (or (getenv "$PATH") "")))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell ensime coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

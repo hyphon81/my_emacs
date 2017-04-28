@@ -218,6 +218,10 @@
 ;; coffee-mode
 (require 'coffee-mode)
 
+;; for markdown
+;; markddown-mode
+(require 'markdown-mode)
+
 ;; for git
 (require 'magit)
 
@@ -275,7 +279,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell ensime coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
+    (markdown-mode erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell ensime coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

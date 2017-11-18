@@ -41,16 +41,16 @@
 (set-default-coding-systems 'utf-8-unix) ;デフォルトの文字コード 
 
 ;;(add-to-list 'default-frame-alist '(font . "Ricty-20"))
-(set-default-font "Ricty-20")
+(set-default-font "Ricty-15")
 
 
 ;;(setq skk-server-host "slack.hyphon81.net")
 ;;(setq skk-server-portnum 1178)
 
-(require 'skk-autoloads)
-(global-set-key "\C-x\C-j" 'skk-mode)
-(global-set-key "\C-xj" 'skk-auto-fill-mode)
-(global-set-key "\C-xt" 'skk-tutorial)
+;;(require 'skk-autoloads)
+;;(global-set-key "\C-x\C-j" 'skk-mode)
+;;(global-set-key "\C-xj" 'skk-auto-fill-mode)
+;;(global-set-key "\C-xt" 'skk-tutorial)
 
 (defadvice abks:open-file (around my-abks:open-file activate)
   (if (require 'doc-view  nil t)
@@ -170,6 +170,7 @@
 (require 'scala-mode)
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(setq ensime-startup-snapshot-notification nil)
 (require 'mvn)
 
 ;; for erlang program
@@ -180,6 +181,22 @@
 
 ;; for C# program
 (require 'csharp-mode)
+
+;; for Go program
+(add-to-list 'exec-path (expand-file-name "/home/hyphon81/workspace/go/bin"))
+(setenv "GOPATH" "/home/hyphon81/workspace/go")
+(require 'go-mode)
+(require 'company-go)
+(add-hook 'go-mode-hook 'company-mode)
+(add-hook 'go-mode-hook 'flycheck-mode)
+(add-hook 'go-mode-hook (lambda()
+                          (add-hook 'before-save-hook' 'gofmt-before-save)
+                          (local-set-key (kbd "M-.") 'godef-jump)
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)
+                          (setq indent-tabs-mode nil)    ; タブを利用
+                          (setq c-basic-offset 4)        ; tabサイズを4にする
+                          (setq tab-width 4)))
 
 ;; for chuck program
 (require 'chuck-mode)
@@ -202,6 +219,7 @@
 ;; js2-mode
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (setq js-indent-level 2)
 
 ;; for haskell program
@@ -213,6 +231,19 @@
 ;          '(lambda ()
 ;             (setq flycheck-checker 'hlint)
 ;             (flycheck-mode 1)))
+
+;; for java
+(require 'meghanada)
+(add-hook 'java-mode-hook
+          (lambda ()
+            ;; meghanada-mode on
+            (meghanada-mode t)
+            (setq c-basic-offset 2)
+            ;; use code format
+            (add-hook 'before-save-hook 'meghanada-code-beautify-before-save)))
+
+;; for yaml
+(require 'yaml-mode)
 
 ;; for Cofeescript program
 ;; coffee-mode
@@ -249,7 +280,7 @@
 ;; window size
 (setq default-frame-alist
       (append (list
-               '(font . "Ricty-20")
+               '(font . "Ricty-15")
                '(width . 80)
                '(height . 30))
               default-frame-alist))
@@ -279,7 +310,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (markdown-mode erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell ensime coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
+    (company-go go-mode ensime yaml-mode meghanada rjsx-mode jsx-mode markdown-mode erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

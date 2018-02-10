@@ -41,7 +41,7 @@
 (set-default-coding-systems 'utf-8-unix) ;デフォルトの文字コード 
 
 ;;(add-to-list 'default-frame-alist '(font . "Ricty-20"))
-(set-default-font "Ricty-15")
+(set-default-font "Ricty Diminished-13")
 
 
 ;;(setq skk-server-host "slack.hyphon81.net")
@@ -222,6 +222,11 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (setq js-indent-level 2)
 
+;; for typescript program
+;; typscript-mode
+(require 'typescript-mode)
+(setq typescript-indent-level 2)
+
 ;; for haskell program
 ;; haskell-mode
 (require 'haskell-mode)
@@ -280,7 +285,7 @@
 ;; window size
 (setq default-frame-alist
       (append (list
-               '(font . "Ricty-15")
+               '(font . "Ricty Diminished-13")
                '(width . 80)
                '(height . 30))
               default-frame-alist))
@@ -310,7 +315,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-go go-mode ensime yaml-mode meghanada rjsx-mode jsx-mode markdown-mode erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
+    (typescript-mode company-go go-mode ensime yaml-mode meghanada rjsx-mode jsx-mode markdown-mode erlang csharp-mode nix-mode w3 undo-tree ssh mvn magit js2-mode htmlize grep-a-lot git gh flycheck-haskell coffee-mode cl-format auto-complete-octave auto-complete-c-headers anything))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
